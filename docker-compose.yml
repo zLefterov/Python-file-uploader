@@ -1,0 +1,27 @@
+
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "8001:8001"
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+    ports:
+     - "3306:3306"
+  sonarqube:
+    image: sonarqube
+    ports:
+     - "9000:9000"
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+     - "5672:5672"
+     - "15672:15672"
+  nexus:
+    image: sonatype/nexus3
+    ports:
+     - "8081:8081"
